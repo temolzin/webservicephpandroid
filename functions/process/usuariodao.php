@@ -16,6 +16,16 @@
         $objUsuario[] = $value;
       }
       echo json_encode($objUsuario, JSON_UNESCAPED_UNICODE);
+    }        
+
+    public function readtipousuario()
+    {
+      $query = "SELECT * FROM tipousuario";
+      $objUsuario = null;
+      foreach ($this->conex->consultar($query) as $key => $value) {
+        $objUsuario['data'][] = $value;
+      }
+      echo json_encode($objUsuario, JSON_UNESCAPED_UNICODE);
     }    
 
     public function readbyidusuario($idusuario)
