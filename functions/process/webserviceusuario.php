@@ -24,6 +24,11 @@
 		$user->insert($data);
 	} else if($accion == "readtipousuario") {
 		json_encode($user->readtipousuario());
+	} else if($accion == "readbyusernameandpassword") {
+		$tipousuario = $_POST['idtipousuario'];
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$user->readbyusernameandpassword($username, $password, $tipousuario);
 	}
 
 

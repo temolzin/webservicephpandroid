@@ -40,6 +40,25 @@
       } catch(Exception $e) {
         $objUsuario = [];
       }
+    }    
+
+    public function readbyusernameandpassword($username, $password, $tipousuario)
+    {
+      try {
+        $query = "SELECT * FROM usuario u INNER JOIN tipousuario tu
+        ON u.id_tipo_usuario = tu.id_tipo_usuario WHERE username =  '$username' and password = '$password'";
+        $objUsuario = null;
+        foreach ($this->conex->consultar($query) as $key => $value) {
+          if($tipousuario == $value['id_tipo_usuario']) {
+            $objUsuario = $value;
+          } else {
+            $objUsuario = "errorTipoUsuario";
+          }
+        }
+        echo json_encode($objUsuario, JSON_UNESCAPED_UNICODE);
+      } catch(Exception $e) {
+        $objUsuario = [];
+      }
     }
 
   
